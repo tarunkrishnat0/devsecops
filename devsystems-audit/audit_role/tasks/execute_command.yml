@@ -1,0 +1,19 @@
+# tasks/execute_command.yml
+---
+- name: Run command
+  command: "{{ cmd }}"
+  register: command_result
+  ignore_errors: true
+
+- name: Save command result to control node
+  copy:
+    content: |
+      {
+        "host": {{ inventory_hostname | to_json }},
+        "command": {{ cmd | to_json }},
+        "exit_code": {{ command_result.rc }},
+        "stdout": {{ command_result.stdout | to_json }},
+        "stderr": {{ command_result.stderr | to_json }}
+      }
+    dest: "/tmp/command_results/{{ inventory_hostname }}_{{ cmd | regex_replace('[^a-zA-Z0-9]', '_') }}.json"
+  delegate_to: localhost

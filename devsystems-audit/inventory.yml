@@ -1,0 +1,14 @@
+all:
+  children:
+    clients:
+      hosts:
+        sys-local:
+          ansible_user: trnkr
+          ansible_host: 127.0.0.1
+          ansible_connection: local
+        sys-005:
+          ansible_user: ttk-admin
+          ansible_host: 192.168.2.79
+          ansible_connection: ssh
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

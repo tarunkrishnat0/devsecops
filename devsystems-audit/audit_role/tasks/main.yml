@@ -1,0 +1,68 @@
+# tasks/main.yml
+---
+- name: Copy command list to remote system
+  copy:
+    src: "{{ role_path }}/files/command_list.txt"
+    dest: /tmp/command_list.txt
+
+- name: Read command list on the remote system
+  slurp:
+    src: /tmp/command_list.txt
+  register: command_list_file
+
+- name: Set commands list as variable
+  set_fact:
+    commands: "{{ command_list_file['content'] | b64decode | split('\n') }}"
+
+- name: Ensure results directory on control node
+  file:
+    path: /tmp/command_results
+    state: directory
+  delegate_to: localhost
+  run_once: true
+
+- name: Execute each command and record status
+  include_tasks: execute_command.yml
+  loop: "{{ commands }}"
+  loop_control:
+    loop_var: cmd
+
+- name: Find all command result files
+  find:
+    paths: /tmp/command_results
+    patterns: "*.json"
+  register: result_files
+  delegate_to: localhost
+  run_once: true
+
+- name: Load each result file content into results list
+  slurp:
+    src: "{{ item.path }}"
+  register: slurped_files
+  loop: "{{ result_files.files }}"
+  loop_control:
+    label: "{{ item.path }}"
+  delegate_to: localhost
+  run_once: true
+
+- name: Set consolidated results variable from slurped files
+  set_fact:
+    results: "{{ results | default([]) + [item_json] }}"
+  loop: "{{ slurped_files.results }}"
+  vars:
+    item_json: "{{ (item.content | b64decode) | from_json }}"
+  delegate_to: localhost
+  run_once: true
+
+- name: Generate CSV report (run once on control node)
+  template:
+    src: results.csv.j2
+    dest: results.csv
+  delegate_to: localhost
+  run_once: true
+
+- name: Clean up command list and temp files from remote systems
+  file:
+    path: /tmp/command_list.txt
+    state: absent
+  when: inventory_hostname != "localhost"

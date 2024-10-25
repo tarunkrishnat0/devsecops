@@ -1,0 +1,4 @@
+host,command,exit_code,stdout,stderr
+{% for result in results %}
+{{ result.host }},{{ result.command }},{{ result.exit_code }},{{ result.stdout | replace(',', ';') }},{{ result.stderr | replace(',', ';') }}
+{% endfor %}
