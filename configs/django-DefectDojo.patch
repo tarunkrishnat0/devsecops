@@ -1,0 +1,13 @@
+diff --git a/dojo/tools/bearer_cli/parser.py b/dojo/tools/bearer_cli/parser.py
+index a7b4eba4f..7abc4f720 100644
+--- a/dojo/tools/bearer_cli/parser.py
++++ b/dojo/tools/bearer_cli/parser.py
+@@ -33,7 +33,7 @@ class BearerCLIParser:
+                 finding = Finding(
+                     title=bearerfinding["title"] + " in " + bearerfinding["filename"] + ":" + str(bearerfinding["line_number"]),
+                     test=test,
+-                    description=bearerfinding["description"] + "\n Detected code snippet: \n" + bearerfinding["snippet"],
++                    description=bearerfinding["description"] + "\n Detected code snippet: \n" + bearerfinding.get("snippet", ""),
+                     severity=severity,
+                     cwe=bearerfinding["cwe_ids"][0],
+                     static_finding=True,
