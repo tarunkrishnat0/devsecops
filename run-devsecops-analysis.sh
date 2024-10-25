@@ -28,12 +28,12 @@ generate_report() {
 
     # Bandit is an open-source SAST tool designed specifically for Python applications.
     echo -e "\n ########### Running Bandit ########### \n"
-    docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports ghcr.io/pycqa/bandit/bandit -q -r /src -f json -o /reports/$repo_name/tool_outputs/${repo_name}_bandit.json
+    time docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports -v $(pwd)/configs/bandit.yaml:/bandit.yaml ghcr.io/pycqa/bandit/bandit -c /bandit.yaml -q -r /src -f json -o /reports/$repo_name/tool_outputs/${repo_name}_bandit.json
 
     # Horusec is an open-source tool that performs a static code analysis to identify security flaws during development.
     # Current languages for analysis are C#, Java, Kotlin, Python, Ruby, Golang, Terraform, Javascript, Typescript, Kubernetes, PHP, C, HTML, JSON, Dart, Elixir, Shell, and Nginx.
     echo -e "\n ########### Running Horusec ########### \n"
-    docker run -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $(pwd) -o json -O /reports/$repo_name/tool_outputs/${repo_name}_horusec.json
+    time docker run -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $(pwd) -i="**/node_modules/**, **/venv/**" -o json -O /reports/$repo_name/tool_outputs/${repo_name}_horusec.json
 
     # Bearer is a static application security testing (SAST) tool that scans your source code and analyzes your data flows to discover, filter, and prioritize security and privacy risks.
     # Currently supports JavaScript, TypeScript, Ruby, and Java stacks.
