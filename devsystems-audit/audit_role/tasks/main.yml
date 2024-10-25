@@ -1,35 +1,92 @@
 # tasks/main.yml
 ---
-- name: Copy command list to remote system
-  copy:
-    src: "{{ role_path }}/files/command_list.txt"
-    dest: /tmp/command_list.txt
+- name: List of old audit related files
+  find:
+    paths: "/tmp/"
+    patterns: 'audit_*'
+    use_regex: yes
+    recurse: yes
+    file_type: any
+  register: old_files_dump
 
-- name: Read command list on the remote system
-  slurp:
-    src: /tmp/command_list.txt
-  register: command_list_file
-
-- name: Set commands list as variable
-  set_fact:
-    commands: "{{ command_list_file['content'] | b64decode | split('\n') }}"
+- name: Clean up temp folders & files
+  file:
+    path: '{{ item.path }}'
+    state: absent
+  with_items: '{{ old_files_dump.files}}'
+  become: true
+  no_log: true
 
 - name: Ensure results directory on control node
   file:
-    path: /tmp/command_results
+    path: /tmp/audit_results
     state: directory
   delegate_to: localhost
   run_once: true
 
-- name: Execute each command and record status
-  include_tasks: execute_command.yml
-  loop: "{{ commands }}"
-  loop_control:
-    loop_var: cmd
+- name: Ensure audit_scripts directory exists in all hosts
+  file:
+    path: /tmp/audit_scripts/
+    state: directory
 
-- name: Find all command result files
+- name: Copy audit_commands_list.txt to all hosts
+  copy:
+    src: "{{ role_path }}/files/audit_commands_list.txt"
+    dest: "/tmp/audit_commands_list.txt"
+  become: true
+
+- name: Copy bash scripts to remote system
+  copy:
+    src: "{{ role_path }}/files/scripts/"
+    dest: "/tmp/audit_scripts/"
+    mode: a+x
+
+- name: Read commands from audit_commands_list.txt on remote host
+  slurp:
+    src: /tmp/audit_commands_list.txt
+  register: commands_file
+
+- name: Set commands from file
+  set_fact:
+    commands: "{{ commands_file.content | b64decode | regex_findall('.+') | list }}"
+
+# - name: Debugging Display role path
+#   debug:
+#     msg: "Role Path: {{ role_path }}"
+
+- name: Define scripts to execute
   find:
-    paths: /tmp/command_results
+    paths: "/tmp/audit_scripts/"
+    patterns: '*.sh'
+  register: scripts_dump
+
+- name: Make scripts list
+  set_fact:
+    scripts: "{{ scripts_dump.files|map(attribute='path')|list }}"
+
+# - name: Debugging Display scripts found
+#   debug:
+#     msg: "Scripts found: {{ scripts }}"
+
+# Check if scripts variable is empty
+- name: Fail if no scripts found
+  fail:
+    msg: "No scripts found in the directory!"
+  when: scripts | length == 0
+
+- name: Combine commands and scripts
+  set_fact:
+    commands_and_scripts: "{{ commands + scripts }}"
+
+- name: Execute each command and script, and record status
+  include_tasks: execute_command_script.yml
+  loop: "{{ commands_and_scripts }}"
+  loop_control:
+    loop_var: item
+
+- name: Find all command/script result files
+  find:
+    paths: /tmp/audit_results
     patterns: "*.json"
   register: result_files
   delegate_to: localhost
@@ -53,6 +110,7 @@
     item_json: "{{ (item.content | b64decode) | from_json }}"
   delegate_to: localhost
   run_once: true
+  no_log: true
 
 - name: Generate CSV report (run once on control node)
   template:
@@ -61,8 +119,21 @@
   delegate_to: localhost
   run_once: true
 
-- name: Clean up command list and temp files from remote systems
-  file:
-    path: /tmp/command_list.txt
-    state: absent
+- name: List of old audit related files
+  find:
+    paths: "/tmp/"
+    patterns: 'audit_*'
+    use_regex: yes
+    recurse: yes
+    file_type: any
+  register: old_files_dump
   when: inventory_hostname != "localhost"
+
+- name: Clean up temp folders & files
+  file:
+    path: '{{ item.path }}'
+    state: absent
+  with_items: '{{ old_files_dump.files }}'
+  when: inventory_hostname != "localhost"
+  become: true
+  no_log: true

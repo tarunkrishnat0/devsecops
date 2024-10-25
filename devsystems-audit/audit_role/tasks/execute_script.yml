@@ -1,0 +1,20 @@
+# tasks/execute_script.yml
+---
+- name: Run bash script with sudo
+  command: "bash {{ script }}"
+  register: script_result
+  ignore_errors: true
+  become: true  # Run this task with sudo
+
+- name: Save script result to control node
+  copy:
+    content: |
+      {
+        "host": {{ inventory_hostname | to_json }},
+        "script": {{ script | to_json }},
+        "stdout": {{ script_result.stdout | to_json }},
+        "stderr": {{ script_result.stderr | to_json }},
+        "exit_code": {{ script_result.rc }}
+      }
+    dest: "/tmp/script_results/{{ inventory_hostname }}_{{ script | regex_replace('[^a-zA-Z0-9]', '_') }}.json"
+  delegate_to: localhost

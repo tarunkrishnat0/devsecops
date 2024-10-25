@@ -1,5 +1,5 @@
 # playbook.yml
-- hosts: all
+- hosts: all #:!sys-005
   gather_facts: no
   roles:
     - role: audit_role

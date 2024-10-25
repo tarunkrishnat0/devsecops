@@ -1,4 +1,4 @@
-host,command,exit_code,stdout,stderr
+host,command_or_script,exit_code,stdout,stderr
 {% for result in results %}
-{{ result.host }},{{ result.command }},{{ result.exit_code }},{{ result.stdout | replace(',', ';') }},{{ result.stderr | replace(',', ';') }}
+{{ result.host }},{{ result.command_or_script }},{{ result.exit_code }},{{ result.stdout | replace(',', ';') | replace('\n', ';;') }},{{ result.stderr | replace(',', ';')  | replace('\n', ';;') }}
 {% endfor %}

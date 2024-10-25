@@ -8,7 +8,7 @@ all:
           ansible_connection: local
         sys-005:
           ansible_user: ttk-admin
-          ansible_host: 192.168.2.79
+          ansible_host: 192.168.10.58
           ansible_connection: ssh
   vars:
     ansible_python_interpreter: /usr/bin/python3
