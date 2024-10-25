@@ -1,0 +1,6 @@
+[submodule "configs/bearer-rules"]
+	path = configs/bearer-rules
+	url = https://github.com/Bearer/bearer-rules.git
+[submodule "configs/django-DefectDojo"]
+	path = configs/django-DefectDojo
+	url = https://github.com/DefectDojo/django-DefectDojo
