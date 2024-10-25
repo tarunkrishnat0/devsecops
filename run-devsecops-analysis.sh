@@ -23,7 +23,7 @@ generate_report() {
     syft scan dir:$repo_path -q -o cyclonedx-json > reports/$repo_name/sbom/${repo_name}_sbom_cyclonedx.json
     syft scan dir:$repo_path -q -o json > reports/$repo_name/sbom/${repo_name}_sbom.json
     grype sbom:reports/$repo_name/sbom/${repo_name}_sbom.json -q -o json > reports/$repo_name/tool_outputs/${repo_name}_grype.json
-    python create-csv-from-vuln-json.py reports/$repo_name/tool_outputs/${repo_name}_grype.json reports/$repo_name/${repo_name}_supply_chain.csv
+    python3 create-csv-from-vuln-json.py reports/$repo_name/tool_outputs/${repo_name}_grype.json reports/$repo_name/${repo_name}_supply_chain.csv
     echo "-- Supply Chain Security report is at reports/$repo_name/${repo_name}_supply_chain.csv"
 
     # Bandit is an open-source SAST tool designed specifically for Python applications.
@@ -58,6 +58,6 @@ generate_report $1
 for ouput_path in reports/$repo_name/tool_outputs/* ; do
     if [ -f "$ouput_path" ]; then
         echo "Uploading to defect dojo output_path: $ouput_path"
-        python upload_reports_to_defectdojo.py $ouput_path
+        python3 upload_reports_to_defectdojo.py $ouput_path
     fi
 done
