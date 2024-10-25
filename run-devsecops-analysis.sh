@@ -19,6 +19,7 @@ generate_report() {
     mkdir -p reports/$repo_name/sbom reports/$repo_name/tool_outputs
 
     # Supply Chain Analysis
+    echo -e "\n ########### Running Supply Chain Analysis ########### \n"
     syft scan dir:$repo_path -q -o cyclonedx-json > reports/$repo_name/sbom/${repo_name}_sbom_cyclonedx.json
     syft scan dir:$repo_path -q -o json > reports/$repo_name/sbom/${repo_name}_sbom.json
     grype sbom:reports/$repo_name/sbom/${repo_name}_sbom.json -q -o json > reports/$repo_name/tool_outputs/${repo_name}_grype.json
@@ -26,14 +27,17 @@ generate_report() {
     echo "-- Supply Chain Security report is at reports/$repo_name/${repo_name}_supply_chain.csv"
 
     # Bandit is an open-source SAST tool designed specifically for Python applications.
-    docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports ghcr.io/pycqa/bandit/bandit -r /src -f json -o /reports/$repo_name/tool_outputs/${repo_name}_bandit.json
+    echo -e "\n ########### Running Bandit ########### \n"
+    docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports ghcr.io/pycqa/bandit/bandit -q -r /src -f json -o /reports/$repo_name/tool_outputs/${repo_name}_bandit.json
 
     # Horusec is an open-source tool that performs a static code analysis to identify security flaws during development.
     # Current languages for analysis are C#, Java, Kotlin, Python, Ruby, Golang, Terraform, Javascript, Typescript, Kubernetes, PHP, C, HTML, JSON, Dart, Elixir, Shell, and Nginx.
+    echo -e "\n ########### Running Horusec ########### \n"
     docker run -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $(pwd) -o json -O /reports/$repo_name/tool_outputs/${repo_name}_horusec.json
 
     # Bearer is a static application security testing (SAST) tool that scans your source code and analyzes your data flows to discover, filter, and prioritize security and privacy risks.
     # Currently supports JavaScript, TypeScript, Ruby, and Java stacks.
+    echo -e "\n ########### Running Bearer ########### \n"
     bearer_output="reports/$repo_name/tool_outputs/${repo_name}_bearer.json" 
     touch $bearer_output
     chmod 666 $bearer_output
