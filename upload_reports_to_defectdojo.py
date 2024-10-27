@@ -4,28 +4,12 @@ import os
 import json
 from dotenv import load_dotenv
 from pathlib import Path
+import re
 
 dotenv_path = Path('configs/env')
 load_dotenv(dotenv_path=dotenv_path)
 
 DEFECT_DOGO_URL = os.getenv('DEFECT_DOGO_URL')
-url_auth_token = DEFECT_DOGO_URL +'/api/v2/api-token-auth/'
-body_auth_token = { "username": os.getenv('DEFECT_DOJO_USER'), "password": os.getenv('DEFECT_DOJO_PASSWD') }
-
-response = requests.post(url_auth_token, data=body_auth_token)
-
-token=""
-if response.ok:
-    token = json.loads(response.text)['token']
-else:
-    print('Unable to get access token, exiting, ...')
-    exit(1)
-
-# print(token)
-
-headers = {
-    'Authorization': 'Token ' + token
-}
 
 file_name = sys.argv[1]
 scan_type = ''
@@ -44,8 +28,27 @@ for suffix_format in scan_output_suffix:
         scan_type = scan_output_suffix[suffix_format]
         project_name = os.path.basename(file_name).replace(suffix_format, "")
 
+project_name = re.sub("_[a-zA-Z0-9]+$", "", project_name)
 print('scan_type: ' + scan_type)
 print('project_name: ' + project_name)
+
+url_auth_token = DEFECT_DOGO_URL +'/api/v2/api-token-auth/'
+body_auth_token = { "username": os.getenv('DEFECT_DOJO_USER'), "password": os.getenv('DEFECT_DOJO_PASSWD') }
+
+response = requests.post(url_auth_token, data=body_auth_token)
+
+token=""
+if response.ok:
+    token = json.loads(response.text)['token']
+else:
+    print('Unable to get access token, exiting, ...')
+    exit(1)
+
+# print(token)
+
+headers = {
+    'Authorization': 'Token ' + token
+}
 
 all_engagement_details = requests.get(DEFECT_DOGO_URL + '/api/v2/engagements/?name=' + project_name, headers=headers)
 if all_engagement_details.ok:

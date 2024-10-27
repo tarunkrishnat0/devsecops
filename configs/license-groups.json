@@ -1,0 +1,1209 @@
+[
+    {
+        "name": "Copyleft",
+        "licenses": [
+            {
+                "uuid": "3ff35c23-5375-486d-a799-0bda31811ad0",
+                "name": "Affero General Public License v1.0",
+                "licenseId": "AGPL-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "64de783a-148d-42e6-90fc-ce837e8a1e86",
+                "name": "Affero General Public License v1.0 only",
+                "licenseId": "AGPL-1.0-only",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "42aef251-e32c-4767-8135-8d8908850fef",
+                "name": "Affero General Public License v1.0 or later",
+                "licenseId": "AGPL-1.0-or-later",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "24997102-cab3-491e-8d77-d86d413ccd4c",
+                "name": "European Union Public License 1.0",
+                "licenseId": "EUPL-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "39ea3c93-e624-4eb5-ad86-de2d902c2e6d",
+                "name": "European Union Public License 1.1",
+                "licenseId": "EUPL-1.1",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "8abc7f59-c2ec-45d6-a2c1-5f60b27b8f3c",
+                "name": "European Union Public License 1.2",
+                "licenseId": "EUPL-1.2",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "926630c4-d2cc-4cc6-89bc-cd3235f961a0",
+                "name": "GNU Affero General Public License v3.0",
+                "licenseId": "AGPL-3.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "1aec5a4c-9fef-48d9-b60d-e1092d2e44ec",
+                "name": "GNU Affero General Public License v3.0 only",
+                "licenseId": "AGPL-3.0-only",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "9f8da938-df82-4659-8d3b-a3ce6d2097fe",
+                "name": "GNU Affero General Public License v3.0 or later",
+                "licenseId": "AGPL-3.0-or-later",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "e6ac39a8-c3ed-492a-b6fd-b45ba5c4c8f7",
+                "name": "GNU General Public License v1.0 only",
+                "licenseId": "GPL-1.0-only",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "b28d475b-4668-4d18-aa4b-58e6611be3d0",
+                "name": "GNU General Public License v1.0 only",
+                "licenseId": "GPL-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "fc0c0313-5dd6-413d-ac8e-1cdaf884d296",
+                "name": "GNU General Public License v1.0 or later",
+                "licenseId": "GPL-1.0-or-later",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "f1bd3a73-e2ec-4083-9020-c8fc2bb09dbc",
+                "name": "GNU General Public License v1.0 or later",
+                "licenseId": "GPL-1.0+",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "00f7a5f8-4250-4109-8917-0091ab34b371",
+                "name": "GNU General Public License v2.0 only",
+                "licenseId": "GPL-2.0-only",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "7fffeee2-6352-42be-9d80-5fad2282c36e",
+                "name": "GNU General Public License v2.0 only",
+                "licenseId": "GPL-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "d14a6d89-36f5-4482-a805-fafec97bc4eb",
+                "name": "GNU General Public License v2.0 or later",
+                "licenseId": "GPL-2.0-or-later",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "101fb4b8-f160-4d7a-a417-6e1bf505e0f3",
+                "name": "GNU General Public License v2.0 or later",
+                "licenseId": "GPL-2.0+",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "414cd631-77ae-4837-aa14-6011feb8e035",
+                "name": "GNU General Public License v2.0 w/Autoconf exception",
+                "licenseId": "GPL-2.0-with-autoconf-exception",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "a66b73d1-349c-4450-a926-70335904cfae",
+                "name": "GNU General Public License v2.0 w/Bison exception",
+                "licenseId": "GPL-2.0-with-bison-exception",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "49961be6-b89d-4681-bdeb-ed5bc0402950",
+                "name": "GNU General Public License v2.0 w/Classpath exception",
+                "licenseId": "GPL-2.0-with-classpath-exception",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "c72ea785-7028-4efa-9137-e8247825879f",
+                "name": "GNU General Public License v2.0 w/Font exception",
+                "licenseId": "GPL-2.0-with-font-exception",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "c8baa58e-6cdf-4acb-b0e7-5aaa4504e588",
+                "name": "GNU General Public License v2.0 w/GCC Runtime Library exception",
+                "licenseId": "GPL-2.0-with-GCC-exception",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "390a838a-a42a-4c7a-8219-882d52f15d97",
+                "name": "GNU General Public License v3.0 only",
+                "licenseId": "GPL-3.0-only",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "5296afe7-1022-4a1f-bb53-890e0dd3a918",
+                "name": "GNU General Public License v3.0 only",
+                "licenseId": "GPL-3.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "28d46a1b-4ea9-49aa-a231-7bffa621b276",
+                "name": "GNU General Public License v3.0 or later",
+                "licenseId": "GPL-3.0-or-later",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "309d13f9-c7e5-4ba8-80cd-bac16d9e0df2",
+                "name": "GNU General Public License v3.0 or later",
+                "licenseId": "GPL-3.0+",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "695f6325-345e-4ef8-8b27-96bb34bc109f",
+                "name": "GNU General Public License v3.0 w/Autoconf exception",
+                "licenseId": "GPL-3.0-with-autoconf-exception",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "80ea7e33-4eaa-41cb-a475-bcc3cbc484fa",
+                "name": "GNU General Public License v3.0 w/GCC Runtime Library exception",
+                "licenseId": "GPL-3.0-with-GCC-exception",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "c2d26e37-d929-4a66-ade6-c29328888e79",
+                "name": "Microsoft Reciprocal License",
+                "licenseId": "MS-RL",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "ce71891e-2ded-4934-a4b4-2350f9c9b112",
+                "name": "Nethack General Public License",
+                "licenseId": "NGPL",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "dbfac150-fe55-4b10-a4de-239f0e0db0b9",
+                "name": "OCLC Research Public License 2.0",
+                "licenseId": "OCLC-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "06083f42-51f9-4f25-86ed-095b03852a3f",
+                "name": "Open Data Commons Open Database License v1.0",
+                "licenseId": "ODbL-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "8cb73868-1a12-4182-a8d1-ed5bd727bf16",
+                "name": "Open Software License 1.0",
+                "licenseId": "OSL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "7140371b-eb43-4b98-87f3-75c685e94c3e",
+                "name": "Open Software License 1.1",
+                "licenseId": "OSL-1.1",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "12ea5632-f94f-41f5-a555-fe5a5812dc72",
+                "name": "Open Software License 2.0",
+                "licenseId": "OSL-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "aad4bdaf-8d66-48e3-9530-2c7cbee70fa5",
+                "name": "Open Software License 2.1",
+                "licenseId": "OSL-2.1",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "be539723-8310-418e-8f29-018d18268638",
+                "name": "Open Software License 3.0",
+                "licenseId": "OSL-3.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "a27123da-f7c2-4eea-8569-4720e3f405bc",
+                "name": "RealNetworks Public Source License v1.0",
+                "licenseId": "RPSL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "cdebb766-f5a9-4804-a5bf-814a65d57cc7",
+                "name": "Reciprocal Public License 1.1",
+                "licenseId": "RPL-1.1",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "ac5f6a7b-26e8-4ea9-a3f7-eec24a0c2ec2",
+                "name": "Reciprocal Public License 1.5",
+                "licenseId": "RPL-1.5",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            }
+        ],
+        "riskWeight": 8,
+        "uuid": "9b76ed16-3f24-4f58-8b92-548e0bb6ef0d"
+    },
+    {
+        "name": "Non-Commercial",
+        "licenses": [
+            {
+                "uuid": "92266ebc-bb6a-46e6-b16b-3cbaf7df1afd",
+                "name": "Creative Commons Attribution Non Commercial 1.0 Generic",
+                "licenseId": "CC-BY-NC-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "ce06f2a7-a1ea-4c58-ac2b-8b79a4f506a6",
+                "name": "Creative Commons Attribution Non Commercial 2.0 Generic",
+                "licenseId": "CC-BY-NC-2.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "61db4c48-7479-4d4f-bb99-2498a10b9d8a",
+                "name": "Creative Commons Attribution Non Commercial 2.5 Generic",
+                "licenseId": "CC-BY-NC-2.5",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "46c8686b-9362-4408-8cdb-160d4e5d3086",
+                "name": "Creative Commons Attribution Non Commercial 3.0 Unported",
+                "licenseId": "CC-BY-NC-3.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "3c3954c8-adaf-42d8-b0e2-69bad5959e3c",
+                "name": "Creative Commons Attribution Non Commercial 4.0 International",
+                "licenseId": "CC-BY-NC-4.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "9d6c9f45-d708-44f6-a4ee-01ed0dc3eac8",
+                "name": "Creative Commons Attribution Non Commercial No Derivatives 1.0 Generic",
+                "licenseId": "CC-BY-NC-ND-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "9f1c9203-e5d6-4ec5-80f4-313c271dd96a",
+                "name": "Creative Commons Attribution Non Commercial No Derivatives 2.0 Generic",
+                "licenseId": "CC-BY-NC-ND-2.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "40f524e1-7ebd-4ae7-9643-95f5207b22c7",
+                "name": "Creative Commons Attribution Non Commercial No Derivatives 2.5 Generic",
+                "licenseId": "CC-BY-NC-ND-2.5",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "357a776d-b1d3-4080-b71a-2cd5cda579fd",
+                "name": "Creative Commons Attribution Non Commercial No Derivatives 3.0 Unported",
+                "licenseId": "CC-BY-NC-ND-3.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "06888e0f-7d27-469a-80cb-a8adfa53af5d",
+                "name": "Creative Commons Attribution Non Commercial No Derivatives 4.0 International",
+                "licenseId": "CC-BY-NC-ND-4.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "122ab3b0-27f6-42ec-b581-6cd8e26968b4",
+                "name": "Creative Commons Attribution Non Commercial Share Alike 1.0 Generic",
+                "licenseId": "CC-BY-NC-SA-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "49dacc66-dfc6-445d-bfee-4b7d2b49f483",
+                "name": "Creative Commons Attribution Non Commercial Share Alike 2.0 Generic",
+                "licenseId": "CC-BY-NC-SA-2.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "b1685eca-3858-4a4a-87e3-f07122d79e38",
+                "name": "Creative Commons Attribution Non Commercial Share Alike 2.5 Generic",
+                "licenseId": "CC-BY-NC-SA-2.5",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "ca519a33-53ad-444c-8014-5a929d895c76",
+                "name": "Creative Commons Attribution Non Commercial Share Alike 3.0 Unported",
+                "licenseId": "CC-BY-NC-SA-3.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "20eaa2f4-364a-4559-ba85-386bed2b3ecf",
+                "name": "Creative Commons Attribution Non Commercial Share Alike 4.0 International",
+                "licenseId": "CC-BY-NC-SA-4.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            }
+        ],
+        "riskWeight": 10,
+        "uuid": "8fcf0b9f-e5ed-46e2-8a0c-0b9513e2b9d2"
+    },
+    {
+        "name": "Permissive",
+        "licenses": [
+            {
+                "uuid": "97eee7dc-c989-45f3-9a2d-4e58a94da9f3",
+                "name": "Apache License 1.0",
+                "licenseId": "Apache-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "db3fc49e-d26a-4520-b835-aa694b120821",
+                "name": "Apache License 1.1",
+                "licenseId": "Apache-1.1",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "0a77cbf2-5525-4045-92c9-351ca4f793b7",
+                "name": "Apache License 2.0",
+                "licenseId": "Apache-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "cb9c80fa-38f7-4137-a66c-b4fdf2e8a471",
+                "name": "BSD 1-Clause License",
+                "licenseId": "BSD-1-Clause",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "feb9ad2e-6ea8-4a63-a1cb-6e8f7c6f8a18",
+                "name": "BSD 2-Clause \"Simplified\" License",
+                "licenseId": "BSD-2-Clause",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "94dcc9ba-1b78-4606-a182-c20dcb8d81fd",
+                "name": "BSD 2-Clause FreeBSD License",
+                "licenseId": "BSD-2-Clause-FreeBSD",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "8d8e245f-5671-484e-af74-1b9225c4e540",
+                "name": "BSD 2-Clause NetBSD License",
+                "licenseId": "BSD-2-Clause-NetBSD",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "d6a9ed9d-7da1-4474-a434-951c4e63cdd4",
+                "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+                "licenseId": "BSD-3-Clause",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "69b78f75-a814-49e4-a4fd-92feda9f7a99",
+                "name": "BSD 3-Clause Clear License",
+                "licenseId": "BSD-3-Clause-Clear",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "a981780f-df9d-4f1b-96c6-bf9e116a801a",
+                "name": "BSD 3-Clause No Nuclear License",
+                "licenseId": "BSD-3-Clause-No-Nuclear-License",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "a9f45482-942b-4b35-9db6-a94acc104221",
+                "name": "BSD 3-Clause No Nuclear License 2014",
+                "licenseId": "BSD-3-Clause-No-Nuclear-License-2014",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "6b677895-0d16-480a-9957-dfa1f1609ce1",
+                "name": "BSD 3-Clause No Nuclear Warranty",
+                "licenseId": "BSD-3-Clause-No-Nuclear-Warranty",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "97863aee-66c1-401a-9eb7-664dae8b81bc",
+                "name": "BSD 3-Clause Open MPI variant",
+                "licenseId": "BSD-3-Clause-Open-MPI",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "cdab72f1-0a93-448c-98b3-8361f2db093b",
+                "name": "BSD 4-Clause \"Original\" or \"Old\" License",
+                "licenseId": "BSD-4-Clause",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "74ff6e79-aef9-4cbe-8b79-8cd7b794e73e",
+                "name": "BSD Protection License",
+                "licenseId": "BSD-Protection",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "e028ca84-0740-47da-bc04-afbed11c8196",
+                "name": "BSD Source Code Attribution",
+                "licenseId": "BSD-Source-Code",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "318f92a8-5124-4b78-bbcc-0789006fc369",
+                "name": "BSD Zero Clause License",
+                "licenseId": "0BSD",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "18444c80-dee4-4bc9-82fb-595b60beaed4",
+                "name": "BSD with attribution",
+                "licenseId": "BSD-3-Clause-Attribution",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "8db495ea-2cfe-4c40-8b60-8820e90ace4e",
+                "name": "BSD-2-Clause Plus Patent License",
+                "licenseId": "BSD-2-Clause-Patent",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "8c9a6984-2dd9-4427-9654-913839557d37",
+                "name": "BSD-4-Clause (University of California-Specific)",
+                "licenseId": "BSD-4-Clause-UC",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "0f4e77b7-d283-4eb4-8c25-48ae991fda28",
+                "name": "Boost Software License 1.0",
+                "licenseId": "BSL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "897cc29b-2825-48b9-83db-887d45412c63",
+                "name": "CMU License",
+                "licenseId": "MIT-CMU",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "d823a195-365b-4e74-a77e-6fcdbddd26fc",
+                "name": "Creative Commons Attribution Share Alike 1.0 Generic",
+                "licenseId": "CC-BY-SA-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "ce26662d-448e-41ff-bada-e4afccba5ab7",
+                "name": "Creative Commons Attribution Share Alike 2.0 Generic",
+                "licenseId": "CC-BY-SA-2.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "a7854eba-6ffa-4446-a438-7ad2d2e702ad",
+                "name": "Creative Commons Attribution Share Alike 2.5 Generic",
+                "licenseId": "CC-BY-SA-2.5",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "4ddd5600-662c-45f9-bc4c-95fd17a4e0c8",
+                "name": "Creative Commons Attribution Share Alike 3.0 Unported",
+                "licenseId": "CC-BY-SA-3.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "416adb6c-4e5b-4d60-8caf-f45ff238b885",
+                "name": "Creative Commons Attribution Share Alike 4.0 International",
+                "licenseId": "CC-BY-SA-4.0",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "a5832d8d-172b-4de0-aaf6-c3318bf5e14f",
+                "name": "ISC License",
+                "licenseId": "ISC",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "013442ed-6cd6-4ce7-99ee-d06b6823c2f6",
+                "name": "JSON License",
+                "licenseId": "JSON",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "4dc6030f-bf34-4cec-8354-3a8dbb1a61e1",
+                "name": "Lawrence Berkeley National Labs BSD variant license",
+                "licenseId": "BSD-3-Clause-LBNL",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "bc1a6ac3-9b68-4084-87a5-5fe8cbcb56b0",
+                "name": "MIT +no-false-attribs license",
+                "licenseId": "MITNFA",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "bc185cde-c65d-4c5d-9e89-ca3b703616c5",
+                "name": "MIT License",
+                "licenseId": "MIT",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "3fb280c4-f00a-4143-b50d-11111d6958ae",
+                "name": "MIT No Attribution",
+                "licenseId": "MIT-0",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "7271629d-b176-4169-b870-6f8d26036a38",
+                "name": "Universal Permissive License v1.0",
+                "licenseId": "UPL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "60f632c3-a774-4dad-a188-f2ef52f3d991",
+                "name": "University of Illinois/NCSA Open Source License",
+                "licenseId": "NCSA",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "9117897e-2e0b-46a3-a872-c6bd2e9b55ac",
+                "name": "X11 License",
+                "licenseId": "X11",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "46753cd0-e783-45f7-81a4-9eb6efee67e0",
+                "name": "Xerox License",
+                "licenseId": "Xerox",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "92c648a9-55ff-44dc-9dbe-b973d82310e7",
+                "name": "enna License",
+                "licenseId": "MIT-enna",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "38eade3e-af70-4c51-ae9d-0a9fd1768e3d",
+                "name": "feh License",
+                "licenseId": "MIT-feh",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            }
+        ],
+        "riskWeight": 0,
+        "uuid": "a0dc8e79-fde4-49cb-9d4b-9c5dc1a1e037"
+    },
+    {
+        "name": "Weak Copyleft",
+        "licenses": [
+            {
+                "uuid": "8ff6ab83-de4c-4175-9c75-8384c2ea57fc",
+                "name": "Academic Free License v1.1",
+                "licenseId": "AFL-1.1",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "b8adc1a2-becb-4c97-87c0-84e80d24f3a2",
+                "name": "Academic Free License v1.2",
+                "licenseId": "AFL-1.2",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "19df0c16-6710-456e-a0a9-d6aae41bdd71",
+                "name": "Academic Free License v2.0",
+                "licenseId": "AFL-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "62232055-3085-461d-811e-01b341807e63",
+                "name": "Academic Free License v2.1",
+                "licenseId": "AFL-2.1",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "74f5141c-60c3-4c1c-bca8-8e63b51466a4",
+                "name": "Academic Free License v3.0",
+                "licenseId": "AFL-3.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "dc21de0f-ecbb-410c-9e86-9441555f2df8",
+                "name": "Apple Public Source License 1.0",
+                "licenseId": "APSL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "eace5fa4-4212-44f1-b36e-37f3dcf88868",
+                "name": "Apple Public Source License 1.1",
+                "licenseId": "APSL-1.1",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "f4cd5972-3c43-447e-9a93-7be402b383f1",
+                "name": "Apple Public Source License 1.2",
+                "licenseId": "APSL-1.2",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "f4c06d65-2326-47ca-96fd-104b56b88276",
+                "name": "Apple Public Source License 2.0",
+                "licenseId": "APSL-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "e762418a-d492-4e17-8c55-ff965bda9abe",
+                "name": "Common Development and Distribution License 1.0",
+                "licenseId": "CDDL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "927f5a46-1825-4591-8024-03147736976a",
+                "name": "Common Development and Distribution License 1.1",
+                "licenseId": "CDDL-1.1",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "b69340cf-ee0c-4ffa-b6ae-7eedc5f5c097",
+                "name": "Eclipse Public License 1.0",
+                "licenseId": "EPL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "329993dc-81d1-45fa-9ea0-dd2d3207754e",
+                "name": "Eclipse Public License 2.0",
+                "licenseId": "EPL-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "3b4f5928-59d1-4744-9b2f-0920f02054a7",
+                "name": "GNU Lesser General Public License v2.1 only",
+                "licenseId": "LGPL-2.1-only",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "f20672cd-9c85-4278-b2c4-4318454b3066",
+                "name": "GNU Lesser General Public License v2.1 only",
+                "licenseId": "LGPL-2.1",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "76646c5d-44d5-477a-821d-5e150bb7eb61",
+                "name": "GNU Lesser General Public License v2.1 or later",
+                "licenseId": "LGPL-2.1-or-later",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "978b88ef-0c77-42a8-becc-17765e4342ac",
+                "name": "GNU Lesser General Public License v2.1 or later",
+                "licenseId": "LGPL-2.1+",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "cf77cfc4-3ae8-4d04-b2f1-e2c410e6ca94",
+                "name": "GNU Lesser General Public License v3.0 only",
+                "licenseId": "LGPL-3.0-only",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "cec12e1e-8338-44d3-90b0-7f4b7139c04f",
+                "name": "GNU Lesser General Public License v3.0 only",
+                "licenseId": "LGPL-3.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "ea119019-290c-4c12-8a1c-997838ab2d94",
+                "name": "GNU Lesser General Public License v3.0 or later",
+                "licenseId": "LGPL-3.0-or-later",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "18c3c57e-e953-47de-a30f-c3416f410501",
+                "name": "GNU Lesser General Public License v3.0 or later",
+                "licenseId": "LGPL-3.0+",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "f31dca04-1605-4866-9f4d-4631b8503557",
+                "name": "GNU Library General Public License v2 only",
+                "licenseId": "LGPL-2.0-only",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "45196e34-22e4-4fea-b911-c70a8ee37482",
+                "name": "GNU Library General Public License v2 or later",
+                "licenseId": "LGPL-2.0-or-later",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "ee29008b-f812-452e-aad6-532d39b62555",
+                "name": "GNU Library General Public License v2 or later",
+                "licenseId": "LGPL-2.0+",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "df17930a-6ad5-4b63-938a-ecfefa45b509",
+                "name": "Mozilla Public License 1.0",
+                "licenseId": "MPL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "b1d1d9ea-f2e2-4411-b402-bf716a3c7b70",
+                "name": "Mozilla Public License 1.1",
+                "licenseId": "MPL-1.1",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "2ea007bb-96ba-44cf-8603-2a4ae494c2da",
+                "name": "Mozilla Public License 2.0",
+                "licenseId": "MPL-2.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "004f4f11-4d19-42a9-a364-9b239e391510",
+                "name": "Mozilla Public License 2.0 (no copyleft exception)",
+                "licenseId": "MPL-2.0-no-copyleft-exception",
+                "isOsiApproved": true,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "d2fa451d-e113-40a3-8719-1142048a48ef",
+                "name": "Netizen Open Source License",
+                "licenseId": "NOSL",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "a930a010-e96c-4933-bae3-5ffccad2cd2a",
+                "name": "Netscape Public License v1.0",
+                "licenseId": "NPL-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "49543e41-dfa8-4407-a11a-8589db6641f0",
+                "name": "Netscape Public License v1.1",
+                "licenseId": "NPL-1.1",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "272065ff-433c-4653-ac8a-860a52a93f62",
+                "name": "Nokia Open Source License",
+                "licenseId": "Nokia",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "fd9a3b4d-aea5-4cb8-9cde-2a2d9fae808c",
+                "name": "Sun Public License v1.0",
+                "licenseId": "SPL-1.0",
+                "isOsiApproved": true,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "4fdc3b20-7599-41d3-a928-5352c37aa3d3",
+                "name": "Yahoo! Public License v1.0",
+                "licenseId": "YPL-1.0",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "493ed478-0ade-40e8-a0aa-b78096e73bf5",
+                "name": "Yahoo! Public License v1.1",
+                "licenseId": "YPL-1.1",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "189029bb-2343-41f3-bdf5-5c179e406ec4",
+                "name": "Zimbra Public License v1.3",
+                "licenseId": "Zimbra-1.3",
+                "isOsiApproved": false,
+                "isFsfLibre": true,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            },
+            {
+                "uuid": "77ed99ed-8d4f-460a-8e90-3909ca97ddc1",
+                "name": "Zimbra Public License v1.4",
+                "licenseId": "Zimbra-1.4",
+                "isOsiApproved": false,
+                "isFsfLibre": false,
+                "isDeprecatedLicenseId": false,
+                "isCustomLicense": false
+            }
+        ],
+        "riskWeight": 3,
+        "uuid": "6d33baf4-819f-47aa-9f46-a0729fcd2248"
+    }
+]
