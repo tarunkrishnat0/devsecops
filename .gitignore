@@ -1,0 +1,4 @@
+reports/*
+code/*
+consolidate_reports/**/*.csv
+**Zone.Identifier
