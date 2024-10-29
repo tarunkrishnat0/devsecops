@@ -6,17 +6,39 @@
     :versions: []
     :when: 2024-10-27 05:49:04.761648405 Z
 - - :permit
-  - BSD
+  - CMU License (MIT-CMU)
   - :who: 
     :why: 
     :versions: []
-    :when: 2024-10-27 05:49:37.294496455 Z
+    :when: 2024-10-27 05:49:04.761648405 Z
+
+########## APACHE
 - - :permit
   - Apache 2.0
   - :who: 
     :why: 
     :versions: []
     :when: 2024-10-27 05:49:59.741080053 Z
+- - :permit
+  - Apache 1.1
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:49:59.741080053 Z
+- - :permit
+  - Apache*
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:49:59.741080053 Z
+
+########## BSD
+- - :permit
+  - BSD
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:49:37.294496455 Z
 - - :permit
   - New BSD
   - :who: 
@@ -30,13 +52,63 @@
     :versions: []
     :when: 2024-10-27 05:50:57.885963159 Z
 - - :permit
+  - BSD Zero Clause License
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:50:57.885963159 Z
+
+########## PYTHON
+- - :permit
   - Python Software Foundation License
   - :who: 
     :why: 
     :versions: []
     :when: 2024-10-27 05:50:57.885963159 Z
 - - :permit
-  - Mozilla Public License 2.0
+  - Python-2.0
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:50:57.885963159 Z
+
+########## ISC
+- - :permit
+  - ISC
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:50:57.885963159 Z
+- - :permit
+  - ISC License (ISCL)
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:50:57.885963159 Z
+
+########## CC
+- - :permit
+  - CC-BY-4.0
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:50:57.885963159 Z
+- - :permit
+  - CC0 1.0 Universal
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:50:57.885963159 Z
+- - :permit
+  - CC-BY-3.0
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2024-10-27 05:50:57.885963159 Z
+
+########## OTHERS
+- - :permit
+  - WTFPL
   - :who: 
     :why: 
     :versions: []
