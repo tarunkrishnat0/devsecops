@@ -141,13 +141,13 @@ generate_report() {
 
     # Bandit is an open-source SAST tool designed specifically for Python applications.
     echo -e "\n ########### Running Bandit ########### \n"
-    echo $repo_path
+    # echo $repo_path
     time docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports -v $(pwd)/configs/bandit.yaml:/bandit.yaml ghcr.io/pycqa/bandit/bandit -c /bandit.yaml -q -r /src -f json -o /reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_bandit.json
 
     # Horusec is an open-source tool that performs a static code analysis to identify security flaws during development.
     # Current languages for analysis are C#, Java, Kotlin, Python, Ruby, Golang, Terraform, Javascript, Typescript, Kubernetes, PHP, C, HTML, JSON, Dart, Elixir, Shell, and Nginx.
     echo -e "\n ########### Running Horusec ########### \n"
-    time docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $repo_path -i="**/node_modules/**, **/venv/**, **/tests/**, **db.sqlite3**, dist/**" -o json -O /reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_horusec.json
+    time docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $repo_path -i="**/node_modules/**, **/venv/**, **/tests/**, **db.sqlite3**, **/dist/**" -o json -O /reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_horusec.json
 
     # Bearer is a static application security testing (SAST) tool that scans your source code and analyzes your data flows to discover, filter, and prioritize security and privacy risks.
     # Currently supports JavaScript, TypeScript, Ruby, and Java stacks.
@@ -169,10 +169,10 @@ generate_report() {
 
 generate_report $1
 
-# repo_name=$(basename $1)
-# for ouput_path in reports/$repo_name/tool_outputs/*.json ; do
-#     if [ -f "$ouput_path" ]; then
-#         echo "Uploading to defect dojo output_path: $ouput_path"
-#         python3 upload_reports_to_defectdojo.py $ouput_path
-#     fi
-# done
+repo_name=$(basename $1)
+for ouput_path in reports/$repo_name/tool_outputs/*.json ; do
+    if [ -f "$ouput_path" ]; then
+        echo "Uploading to defect dojo output_path: $ouput_path"
+        python3 upload_reports_to_defectdojo.py $ouput_path
+    fi
+done

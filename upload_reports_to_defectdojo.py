@@ -28,7 +28,7 @@ for suffix_format in scan_output_suffix:
         scan_type = scan_output_suffix[suffix_format]
         project_name = os.path.basename(file_name).replace(suffix_format, "")
 
-project_name = re.sub("_[a-zA-Z0-9]+$", "", project_name)
+# project_name = re.sub("_[a-zA-Z0-9]+$", "", project_name)
 print('scan_type: ' + scan_type)
 print('project_name: ' + project_name)
 
