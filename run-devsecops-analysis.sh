@@ -24,6 +24,7 @@ generate_report() {
     remote_tacking_branch=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
     latest_commit_id=$(git rev-parse --short HEAD)
     cd -
+    echo ${repo_name}_${latest_commit_id}
     
     mkdir -p reports/$repo_name/sbom reports/$repo_name/tool_outputs
 
@@ -83,7 +84,7 @@ generate_report() {
         if [[ -n "$pip_packages_to_install" ]]; then
             mv -f requirements.txt requirements_original_backup_${latest_commit_id}.txt
             echo "$pip_packages_to_install" > requirements.txt
-            echo "$pip_packages_to_install" > combined_requirements_${latest_commit_id}.txt
+            # echo "$pip_packages_to_install" > combined_requirements_${latest_commit_id}.txt
             if [ -d .venv ]; then
                 mv -T .venv .venv_${latest_commit_id}
             fi
@@ -147,7 +148,7 @@ generate_report() {
     # Horusec is an open-source tool that performs a static code analysis to identify security flaws during development.
     # Current languages for analysis are C#, Java, Kotlin, Python, Ruby, Golang, Terraform, Javascript, Typescript, Kubernetes, PHP, C, HTML, JSON, Dart, Elixir, Shell, and Nginx.
     echo -e "\n ########### Running Horusec ########### \n"
-    time docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $repo_path -i="**/node_modules/**, **/venv/**, **/tests/**, **db.sqlite3**, **/dist/**" -o json -O /reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_horusec.json
+    time docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $repo_path -i="**/node_modules/**, **/venv/**, **/tests/**, **/*db.sqlite3*, **/dist/**, **/*.ipynb, /src/sales_crm_backend/settings/**, *enums*, /src/automation_workflows/constants/enum.py, **/*.env*" -o json -O /reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_horusec.json
 
     # Bearer is a static application security testing (SAST) tool that scans your source code and analyzes your data flows to discover, filter, and prioritize security and privacy risks.
     # Currently supports JavaScript, TypeScript, Ruby, and Java stacks.
