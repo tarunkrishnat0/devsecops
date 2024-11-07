@@ -16,6 +16,14 @@ git clone --recursive -b dev git@github.com:tarunkrishnat0/devsecops.git
 sudo apt update
 sudo apt install -y vim git tmux htop iputils-ping rsyslog fontconfig unzip curl nano python3-dev python3-venv python3-pip libffi-dev gcc libssl-dev git net-tools  sqlite-utils
 ```
+- [ ] Create virtual env and few tools
+```sh
+virtualenv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin
+```
 
 # Setting up third party tools
 
@@ -35,11 +43,11 @@ git apply  ../django-DefectDojo.patch
 
 # Obtain admin credentials. The initializer can take up to 3 minutes to run.
 # Use docker compose logs -f initializer to track its progress.
-docker compose logs initializer | grep "Admin password:" | tee defect_dojo_creds.txt
+docker compose logs initializer | grep "Admin " | tee ../../defect_dojo_creds.txt
 ```
 
 ### Creating user for importing scan results
-Create a user in defect dojo(http://localhost:8080/) as per below details:
+Login to defect dojo(http://localhost:8080/) with the credentials from `defect_dojo_creds.txt` and create a user as per below details:
 ```
 username: scan-importer
 password: Scan-Importer09
@@ -53,9 +61,8 @@ Note: These creds should be same as `./config/env`
 
 # Execution
 ```sh
-virtualenv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+# Change the /full/path/to/project/ to the repo that you want to scan
 time bash run-devsecops-analysis.sh /full/path/to/project/
 ```
 
