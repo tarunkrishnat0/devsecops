@@ -7,6 +7,16 @@ Clone the dev branch with all submodules.
 git clone --recursive -b dev git@github.com:tarunkrishnat0/devsecops.git
 ```
 
+# Pre-requisites
+- [ ] [Install Docker](https://docs.docker.com/engine/install/ubuntu/)
+- [ ] [Add user to docker group](https://docs.docker.com/engine/install/linux-postinstall/)
+- [ ] [Install Google Chrome from PPA](https://www.tecmint.com/install-chrome-ubuntu/)
+- [ ] Install below packages
+```sh
+sudo apt update
+sudo apt install -y vim git tmux htop iputils-ping rsyslog fontconfig unzip curl nano python3-dev python3-venv python3-pip libffi-dev gcc libssl-dev git net-tools  sqlite-utils
+```
+
 # Setting up third party tools
 
 ## Defect Dojo
@@ -29,7 +39,7 @@ docker compose logs initializer | grep "Admin password:" | tee defect_dojo_creds
 ```
 
 ### Creating user for importing scan results
-Create a user in defect dojo as per below details:
+Create a user in defect dojo(http://localhost:8080/) as per below details:
 ```
 username: scan-importer
 password: Scan-Importer09
@@ -43,6 +53,9 @@ Note: These creds should be same as `./config/env`
 
 # Execution
 ```sh
+virtualenv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 time bash run-devsecops-analysis.sh /full/path/to/project/
 ```
 
