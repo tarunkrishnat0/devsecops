@@ -4,28 +4,35 @@
 
 Clone the dev branch with all submodules.
 ```sh
-git clone --recursive -b dev git@github.com:tarunkrishnat0/devsecops.git
+git clone --recursive -b dev https://github.com/tarunkrishnat0/devsecops.git
 ```
 
 # Pre-requisites
-- [ ] [Install Docker](https://docs.docker.com/engine/install/ubuntu/)
+- [ ] [Install Docker using apt](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 - [ ] [Add user to docker group](https://docs.docker.com/engine/install/linux-postinstall/)
 - [ ] [Install Google Chrome from PPA](https://www.tecmint.com/install-chrome-ubuntu/)
 - [ ] Install below packages
 ```sh
 sudo apt update
-sudo apt install -y vim git tmux htop iputils-ping rsyslog fontconfig unzip curl nano python3-dev python3-venv python3-pip libffi-dev gcc libssl-dev git net-tools  sqlite-utils
+sudo apt install -y vim git tmux htop iputils-ping rsyslog fontconfig unzip curl nano python3-dev python3-venv python3-virtualenv python3-pip libffi-dev gcc libssl-dev git net-tools sqlite-utils
 ```
 - [ ] Create virtual env and few tools
 ```sh
+# Change /path/to/devsecops to the locally cloned devsecops repo
+cd /path/to/devsecops
+
 virtualenv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
-curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin
 ```
 
 # Setting up third party tools
+
+## Install Syft and Grype
+```sh
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin
+```
 
 ## Defect Dojo
 ### Setup
