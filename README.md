@@ -16,7 +16,7 @@ git clone --recursive -b dev https://github.com/tarunkrishnat0/devsecops.git
 sudo apt update
 sudo apt install -y vim git tmux htop iputils-ping rsyslog fontconfig unzip curl nano python3-dev python3-venv python3-virtualenv python3-pip libffi-dev gcc libssl-dev git net-tools sqlite-utils
 ```
-- [ ] Create virtual env and few tools
+- [ ] Create virtual env and install packages
 ```sh
 # Change /path/to/devsecops to the locally cloned devsecops repo
 cd /path/to/devsecops
@@ -33,6 +33,10 @@ pip install -r requirements.txt
 curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
 curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin
 ```
+
+## Licensecheck
+Licensecheck has a [bug](https://github.com/FHPythonUtils/LicenseCheck/pull/94) that ignores requirements files of pip.
+Edit the file `.venv/lib/python3.10/site-packages/licensecheck/get_deps.py` as shown in this [PR](https://github.com/FHPythonUtils/LicenseCheck/pull/94/files)
 
 ## Defect Dojo
 ### Setup
