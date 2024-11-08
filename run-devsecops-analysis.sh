@@ -100,9 +100,8 @@ generate_report() {
                 -v ~/.aws:/root/.aws -v ~/.profile:/profile \
                 -v $devsecops_folder_path/.cache/license_finder/pip:/root/.cache/pip:rw \
                 licensefinder/license_finder \
-                /bin/bash -lc "cd /scan && apt update > /dev/null && apt install -y libmysqlclient-dev awscli python3.10-venv > /dev/null && chown -R root:root ~/.cache/pip && source /profile && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt > /dev/null && license_finder report --decisions-file=/configs/LicenseFinder/dependency_decisions.yml --format=csv --columns=$license_finder_columns | grep -v "LicenseFinder::*" | tee /$license_finder_output_path_relative > /dev/null"
+                /bin/bash -lc "cd /scan && apt update > /dev/null 2>&1 && apt install -y libmysqlclient-dev awscli python3.10-venv > /dev/null 2>&1 && chown -R root:root ~/.cache/pip && source /profile && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt > /dev/null && license_finder report --decisions-file=/configs/LicenseFinder/dependency_decisions.yml --format=csv --columns=$license_finder_columns | grep -v "LicenseFinder::*" | tee /$license_finder_output_path_relative > /dev/null"
             sudo rm -rf .venv
-            time docker run --rm -v $PWD:/scan -v $devsecops_folder_path/reports/:/reports -v $devsecops_folder_path/configs/:/configs licensefinder/license_finder /bin/bash -lc "cd /scan && apt update && apt install -y libmysqlclient-dev && pip install -r $requirements_files_install && license_finder report --decisions-file=/configs/LicenseFinder/dependency_decisions.yml --format=csv --columns=$license_finder_columns | tail -n +2 | tee /$license_finder_output_path_relative"
             
             mv -f requirements_original_backup_${latest_commit_id}.txt requirements.txt
 
