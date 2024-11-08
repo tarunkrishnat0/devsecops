@@ -187,7 +187,7 @@ mkdir -p $findings_download_folder/$repo_name/{raw,final}
 echo -e "\n ########### Generating Consolidated Reports ########### \n"
 python3 upload_reports_to_defectdojo.py ${repo_name}_${latest_commit_id} reports/$repo_name/tool_outputs/ $findings_download_folder/$repo_name/raw
 
-python3 consolidate_reports/generate_final_report.py $findings_download_folder/$repo_name/raw/ $findings_download_folder/$repo_name/final/
+python3 generate_final_report.py $findings_download_folder/$repo_name/raw/ $findings_download_folder/$repo_name/final/
 mv $findings_download_folder/$repo_name/final/findings.csv $findings_download_folder/$repo_name/final/$(date +%d-%b)-${repo_name}-${latest_commit_id}-findings.csv
 
 echo
