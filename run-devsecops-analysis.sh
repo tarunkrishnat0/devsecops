@@ -26,9 +26,11 @@ generate_report() {
     remote_tacking_branch=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
     latest_commit_id=$(git rev-parse --short HEAD)
     cd -
-    echo ${repo_name}_${latest_commit_id}
-    
-    mkdir -p reports/$repo_name/sbom reports/$repo_name/tool_outputs
+    # echo ${repo_name}_${latest_commit_id}
+    repo_name=$(date +%d-%b-%Y)_${repo_name}_${latest_commit_id}
+    echo $repo_name
+
+    mkdir -p reports/$repo_name/{sbom,tool_outputs}
 
     # Supply Chain Analysis
     # echo -e "\n ########### Running Supply Chain Analysis ########### \n"
@@ -180,15 +182,14 @@ generate_report() {
 
 generate_report $1
 
-repo_name=$(basename $1)
-findings_download_folder=consolidate_reports/$(date +%d-%b)
-mkdir -p $findings_download_folder/$repo_name/{raw,final}
+#repo_name=$(basename $1)
+mkdir -p reports/$repo_name/consolidated_reports/{raw,final}
 
 echo -e "\n ########### Generating Consolidated Reports ########### \n"
-python3 upload_reports_to_defectdojo.py ${repo_name}_${latest_commit_id} reports/$repo_name/tool_outputs/ $findings_download_folder/$repo_name/raw
+python3 upload_reports_to_defectdojo.py $repo_name reports/$repo_name/tool_outputs/ reports/$repo_name/consolidated_reports/raw
 
-python3 generate_final_report.py $findings_download_folder/$repo_name/raw/ $findings_download_folder/$repo_name/final/
-mv $findings_download_folder/$repo_name/final/findings.csv $findings_download_folder/$repo_name/final/$(date +%d-%b)-${repo_name}-${latest_commit_id}-findings.csv
+python3 generate_final_report.py reports/$repo_name/consolidated_reports/raw/ reports/$repo_name/consolidated_reports/final/
+mv reports/$repo_name/consolidated_reports/final/findings.csv reports/$repo_name/consolidated_reports/final/${repo_name}-findings.csv
 
 echo
-echo "Final report is available at $findings_download_folder/$repo_name/final/$(date +%d-%b)-${repo_name}-${latest_commit_id}-findings.csv"
+echo "Final report is available at reports/$repo_name/consolidated_reports/final/${repo_name}-findings.csv"
