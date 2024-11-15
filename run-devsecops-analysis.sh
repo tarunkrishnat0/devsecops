@@ -33,19 +33,20 @@ generate_report() {
     mkdir -p reports/$repo_name/{sbom,tool_outputs}
 
     # Supply Chain Analysis
-    # echo -e "\n ########### Running Supply Chain Analysis ########### \n"
+    echo -e "\n ########### Running Supply Chain Analysis ########### \n"
     echo -e "\n ########### Running Syft ########### \n"
-    time syft scan dir:$repo_path -c configs/syft.yaml -o cyclonedx-json=reports/$repo_name/sbom/${repo_name}_${latest_commit_id}_sbom_cyclonedx.json
+    time syft scan dir:$repo_path -c configs/syft.yaml -o cyclonedx-json=reports/$repo_name/sbom/${repo_name}_sbom_cyclonedx.json
     echo -e "syft: time taken is above.\n"
-    # syft scan dir:$repo_path -q -o json > reports/$repo_name/sbom/${repo_name}_${latest_commit_id}_sbom.json
+    # syft scan dir:$repo_path -q -o json > reports/$repo_name/sbom/${repo_name}_sbom.json
     echo -e "\n ########### Running Grype ########### \n"
-    time grype sbom:reports/$repo_name/sbom/${repo_name}_${latest_commit_id}_sbom_cyclonedx.json -o json=reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_grype.json
+    time grype sbom:reports/$repo_name/sbom/${repo_name}_sbom_cyclonedx.json -o json=reports/$repo_name/tool_outputs/${repo_name}_grype.json
     echo -e "grype: time taken is above.\n"
-    # python3 create-csv-from-vuln-json.py reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_grype.json reports/$repo_name/${repo_name}_${latest_commit_id}_supply_chain.csv
+    python3 create-csv-from-vuln-json.py reports/$repo_name/tool_outputs/${repo_name}_grype.json reports/$repo_name/${repo_name}_supply_chain.csv
 
+    # false; then #
     if [ -f $repo_path/requirements.txt ]; then
-        licensecheck_output=$(pwd)/reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_python_licensecheck.csv
-        license_finder_output_path_relative=reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_python_license_finder.csv
+        licensecheck_output=$(pwd)/reports/$repo_name/tool_outputs/${repo_name}_python_licensecheck.csv
+        license_finder_output_path_relative=reports/$repo_name/tool_outputs/${repo_name}_python_license_finder.csv
 
         cd $repo_path/
 
@@ -128,7 +129,7 @@ generate_report() {
     fi
 
     if [ -f $repo_path/package.json ]; then
-        license_finder_output_path_relative=reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_npm_license_finder.csv
+        license_finder_output_path_relative=reports/$repo_name/tool_outputs/${repo_name}_npm_license_finder.csv
 
         cd $repo_path/
 
@@ -147,24 +148,24 @@ generate_report() {
         exit 2
     fi
 
-    # echo "-- Supply Chain Security report is at reports/$repo_name/${repo_name}_${latest_commit_id}_supply_chain.csv"
+    # echo "-- Supply Chain Security report is at reports/$repo_name/${repo_name}_supply_chain.csv"
 
     # Bandit is an open-source SAST tool designed specifically for Python applications.
     echo -e "\n ########### Running Bandit ########### \n"
     # echo $repo_path
-    time docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports -v $(pwd)/configs/bandit.yaml:/bandit.yaml ghcr.io/pycqa/bandit/bandit -c /bandit.yaml -q -r /src -f json -o /reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_bandit.json
+    time docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports -v $(pwd)/configs/bandit.yaml:/bandit.yaml ghcr.io/pycqa/bandit/bandit -c /bandit.yaml -q -r /src -f json -o /reports/$repo_name/tool_outputs/${repo_name}_bandit.json
     echo -e "Bandit: time taken is above.\n"
 
     # Horusec is an open-source tool that performs a static code analysis to identify security flaws during development.
     # Current languages for analysis are C#, Java, Kotlin, Python, Ruby, Golang, Terraform, Javascript, Typescript, Kubernetes, PHP, C, HTML, JSON, Dart, Elixir, Shell, and Nginx.
     echo -e "\n ########### Running Horusec ########### \n"
-    time docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $repo_path -i="**/node_modules/**, **/venv/**, **/tests/**, **/*db.sqlite3*, **/dist/**, **/*.ipynb, /src/sales_crm_backend/settings/**, *enums*, /src/automation_workflows/constants/enum.py, **/*.env*" -o json -O /reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_horusec.json
+    time docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $repo_path:/src -v $(pwd)/reports:/reports horuszup/horusec-cli:v2.9.0-beta.3 horusec start -p /src -P $repo_path -i="**/node_modules/**, **/venv/**, **/tests/**, **/*db.sqlite3*, **/dist/**, **/*.ipynb, /src/sales_crm_backend/settings/**, *enums*, /src/automation_workflows/constants/enum.py, **/*.env*, **/*graphqlTypes.ts, **/*graphqlTypes.tsx, **/fixtures/**" -o json -O /reports/$repo_name/tool_outputs/${repo_name}_horusec.json
     echo -e "Horusec: time taken is above.\n"
 
     # Bearer is a static application security testing (SAST) tool that scans your source code and analyzes your data flows to discover, filter, and prioritize security and privacy risks.
     # Currently supports JavaScript, TypeScript, Ruby, and Java stacks.
     echo -e "\n ########### Running Bearer ########### \n"
-    bearer_output="reports/$repo_name/tool_outputs/${repo_name}_${latest_commit_id}_bearer.json" 
+    bearer_output="reports/$repo_name/tool_outputs/${repo_name}_bearer.json" 
     touch $bearer_output
     chmod 666 $bearer_output
     time docker run --rm -v $repo_path:/src -v $(pwd)/reports:/reports -v $(pwd)/configs/bearer-config.yml:/bearer-config.yml -v $(pwd)/configs/bearer-rules:/rules bearer/bearer:latest-amd64 scan /src --config-file /bearer-config.yml -f json --output /$bearer_output

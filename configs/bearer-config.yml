@@ -45,4 +45,4 @@ scan:
   # Suppress non-essential messages
   quiet: true
   # Specify the comma separated files and directories to skip. Supports * syntax.
-  skip-path: ['.nx','.local','.output','*/node_modules','*/dist','.github', '.git', '*/.env*']
+  skip-path: ['.nx','.local','.output','*/node_modules','*/dist','.github', '.git', '*/.env*', '*graphqlTypes.ts', '*graphqlTypes.tsx', '*/fixtures/*' ]
