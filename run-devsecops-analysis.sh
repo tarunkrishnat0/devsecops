@@ -118,21 +118,19 @@ devsecops_folder_path=$(realpath .)
 
 source configs/env
 
-generate_report() {
-    # local repo_path=$1
-    repo_name=$(basename ${repo_path})
-    # echo $repo_name
-    
-    cd $repo_path
-    local_branch_name=$(git branch --show-current)
-    remote_tacking_branch=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
-    latest_commit_id=$(git rev-parse --short HEAD)
-    cd -
-    # echo ${repo_name}_${latest_commit_id}
-    repo_name=$(date +%d-%b-%Y)_${repo_name}_${latest_commit_id}
-    echo $repo_name
+cd $repo_path
+local_branch_name=$(git branch --show-current)
+remote_tacking_branch=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
+latest_commit_id=$(git rev-parse --short HEAD)
+cd -
+# echo ${repo_name}_${latest_commit_id}
+repo_name=$(basename ${repo_path})
+repo_name=$(date +%d-%b-%Y)_${repo_name}_${latest_commit_id}
+echo $repo_name
 
-    mkdir -p reports/$repo_name/{sbom,tool_outputs}
+mkdir -p reports/$repo_name/{sbom,tool_outputs}
+
+generate_report() {
 
     if ! $skip_sbom_sca; then
         # Supply Chain Analysis

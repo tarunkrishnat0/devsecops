@@ -20,6 +20,7 @@ scan_output_suffix = {
     '_bearer.json': 'Bearer CLI',
     '_horusec.json': 'Horusec Scan',
     '_grype.json': 'Anchore Grype',
+    '_sonarqube.json': 'SonarQube Scan',
 }
 
 url_auth_token = DEFECT_DOGO_URL +'/api/v2/api-token-auth/'
@@ -79,6 +80,7 @@ def upload_json_to_defectdojo(file_path, headers):
             project_name = os.path.basename(file_name).replace(suffix_format, "")
 
     if scan_type=="":
+        print(file_path)
         print('Unable to get scan_type, exiting, ...')
         exit(1)
 
