@@ -3,3 +3,4 @@ python-dotenv
 requests
 licensecheck
 selenium
+semgrep==1.96.0
