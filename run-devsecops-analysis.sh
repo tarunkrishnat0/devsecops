@@ -253,12 +253,23 @@ generate_report() {
 
     # Vet
     echo -e "\n ########### Running vet ########### \n"
-    time vet scan -D $repo_path --report-csv reports/$repo_name/tool_outputs/${repo_name}_vet.csv --filter 'true' > /dev/null
+    # time vet scan -D $repo_path --report-csv reports/$repo_name/tool_outputs/${repo_name}_vet.csv --filter 'vulns.critical.exists(p, true) || vulns.high.exists(p, true) || vulns.medium.exists(p, true) || vulns.low.exists(p, true)' > /dev/null
     echo -e "vet: time taken is above.\n"
 
     # Semgrep
     echo -e "\n ########### Running semgrep ########### \n"
-    time semgrep scan -q --json --json-output=reports/$repo_name/tool_outputs/${repo_name}_semgrep.json $repo_path > /dev/null
+    # **/*db.sqlite3*, **/*.ipynb, /src/sales_crm_backend/settings/**, /src/automation_workflows/constants/enum.py, **/*graphqlTypes.ts, **/*graphqlTypes.tsx
+    time semgrep scan -q \
+        --exclude=node_modules \
+        --exclude=venv \
+        --exclude=tests \
+        --exclude=dist \
+        --exclude=*enums* \
+        --exclude=*.env* \
+        --exclude=fixtures \
+        --exclude=*InternationalMobileNumber/constants.ts \
+        --exclude=*IntlPhoneNumberUtils/CountriesList.ts \
+        --json --json-output=reports/$repo_name/tool_outputs/${repo_name}_semgrep.json $repo_path #> /dev/null
     echo -e "semgrep: time taken is above.\n"
 
     # Synk
@@ -274,6 +285,7 @@ generate_report() {
         --network="host" \
         -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=$repo_name" \
         sonarsource/sonar-scanner-cli > /dev/null
+    echo -e "SonarQube: time taken is above.\n"
     
     echo -ne "\nWaiting for sonarqube report to be ready ."
     while : ; do
@@ -288,7 +300,6 @@ generate_report() {
     echo ""
 
     curl -sS -u $DEFECT_DOJO_USER:$DEFECT_DOJO_PASSWD $SONAR_QUBE_URL/api/issues/search?projects=$repo_name -o reports/$repo_name/tool_outputs/${repo_name}_sonarqube.json
-    echo -e "SonarQube: time taken is above.\n"
 
     # Bandit is an open-source SAST tool designed specifically for Python applications.
     echo -e "\n ########### Running Bandit ########### \n"
