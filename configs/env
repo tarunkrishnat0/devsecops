@@ -1,3 +1,4 @@
 DEFECT_DOGO_URL=http://localhost:8080
+SONAR_QUBE_URL=http://localhost:9000
 DEFECT_DOJO_USER=scan-importer
 DEFECT_DOJO_PASSWD=Scan-Importer09
