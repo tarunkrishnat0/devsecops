@@ -253,7 +253,7 @@ generate_report() {
 
     # Vet
     echo -e "\n ########### Running vet ########### \n"
-    # time vet scan -D $repo_path --report-csv reports/$repo_name/tool_outputs/${repo_name}_vet.csv --filter 'vulns.critical.exists(p, true) || vulns.high.exists(p, true) || vulns.medium.exists(p, true) || vulns.low.exists(p, true)' > /dev/null
+    time vet scan -D $repo_path --report-csv reports/$repo_name/tool_outputs/${repo_name}_vet.csv --filter 'vulns.critical.exists(p, true) || vulns.high.exists(p, true) || vulns.medium.exists(p, true) || vulns.low.exists(p, true)' > /dev/null
     echo -e "vet: time taken is above.\n"
 
     # Semgrep
@@ -269,7 +269,8 @@ generate_report() {
         --exclude=fixtures \
         --exclude=*InternationalMobileNumber/constants.ts \
         --exclude=*IntlPhoneNumberUtils/CountriesList.ts \
-        --json --json-output=reports/$repo_name/tool_outputs/${repo_name}_semgrep.json $repo_path #> /dev/null
+        --exclude=*CountriesData.ts \
+        --json --json-output=reports/$repo_name/tool_outputs/${repo_name}_semgrep.json $repo_path > /dev/null
     echo -e "semgrep: time taken is above.\n"
 
     # Synk
