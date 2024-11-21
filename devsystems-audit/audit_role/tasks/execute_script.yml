@@ -11,10 +11,10 @@
     content: |
       {
         "host": {{ inventory_hostname | to_json }},
-        "script": {{ script | to_json }},
+        "command_or_script": {{ script | to_json }},
         "stdout": {{ script_result.stdout | to_json }},
         "stderr": {{ script_result.stderr | to_json }},
         "exit_code": {{ script_result.rc }}
       }
-    dest: "/tmp/script_results/{{ inventory_hostname }}_{{ script | regex_replace('[^a-zA-Z0-9]', '_') }}.json"
+    dest: "/tmp/audit_results/{{ inventory_hostname }}_{{ script | regex_replace('[^a-zA-Z0-9]', '_') }}.json"
   delegate_to: localhost

@@ -17,6 +17,13 @@
   become: true
   no_log: true
 
+- name: Delete old results directory on control node
+  file:
+    path: /tmp/audit_results
+    state: absent
+  delegate_to: localhost
+  run_once: true
+
 - name: Ensure results directory on control node
   file:
     path: /tmp/audit_results
@@ -33,6 +40,7 @@
   copy:
     src: "{{ role_path }}/files/audit_commands_list.txt"
     dest: "/tmp/audit_commands_list.txt"
+    mode: '0644'
   become: true
 
 - name: Copy bash scripts to remote system
@@ -48,7 +56,7 @@
 
 - name: Set commands from file
   set_fact:
-    commands: "{{ commands_file.content | b64decode | regex_findall('.+') | list }}"
+    commands: "{{ commands_file.content | b64decode | regex_findall('.+') | list | select('search', '^[^#]') | list }}"
 
 # - name: Debugging Display role path
 #   debug:
@@ -64,9 +72,11 @@
   set_fact:
     scripts: "{{ scripts_dump.files|map(attribute='path')|list }}"
 
-# - name: Debugging Display scripts found
+# - name: Debugging Display scripts & commands found
 #   debug:
-#     msg: "Scripts found: {{ scripts }}"
+#     msg:
+#       - "Scripts found: {{ scripts }}"
+#       - "Commands found: {{ commands }}"
 
 # Check if scripts variable is empty
 - name: Fail if no scripts found
@@ -74,15 +84,21 @@
     msg: "No scripts found in the directory!"
   when: scripts | length == 0
 
-- name: Combine commands and scripts
-  set_fact:
-    commands_and_scripts: "{{ commands + scripts }}"
+# - name: Combine commands and scripts
+#   set_fact:
+#     commands_and_scripts: "{{ commands + scripts }}"
 
-- name: Execute each command and script, and record status
-  include_tasks: execute_command_script.yml
-  loop: "{{ commands_and_scripts }}"
+- name: Execute each command, and record status
+  include_tasks: execute_command.yml
+  loop: "{{ commands }}"
   loop_control:
-    loop_var: item
+    loop_var: cmd
+
+- name: Execute each script, and record status
+  include_tasks: execute_script.yml
+  loop: "{{ scripts }}"
+  loop_control:
+    loop_var: script
 
 - name: Find all command/script result files
   find:

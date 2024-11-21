@@ -1,3 +1,22 @@
-echo "Hello, World!"
-uptime
-ls /nonexistent_directory
+# Hostname
+hostname
+
+# WiFi Status
+## Connectivity status
+nmcli general status
+
+## only wifi status 
+nmcli radio  wifi 
+
+## nearby Wi-Fi networks
+nmcli dev wifi list
+
+# Run antivirus check
+#sudo clamdscan --multiscan --fdpass /home
+#sudo clamdscan --multiscan --fdpass /usr/
+#sudo clamdscan --multiscan --fdpass /var/
+#sudo clamdscan --multiscan --fdpass /etc/
+#sudo clamdscan --multiscan --fdpass /bin/
+#sudo clamdscan --multiscan --fdpass /media/
+#sudo clamdscan --multiscan --fdpass /opt/
+#sudo clamdscan --multiscan --fdpass /root/

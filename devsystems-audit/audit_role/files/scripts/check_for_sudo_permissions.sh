@@ -1,25 +1,28 @@
 #!/bin/bash
 
-exit_value=0
-# Loop through each user in the /etc/passwd file
-while IFS=: read -r user _ _ _ _ home shell; do
-    # Check if the user has a valid shell (e.g., /bin/bash, /bin/sh, etc.)
-    if [[ "$user" == dw-admin || "$user" == root ]]; then
-        continue
-    fi
-    if [[ "$shell" == /bin/bash || "$shell" == /bin/sh || "$shell" == /bin/zsh ]]; then
-        if id -u "$user" >/dev/null 2>&1; then
-            # Check if the user has sudo privileges
-            if sudo -l -U "$user" | grep -q '(ALL : ALL) ALL'; then
-                echo "$user has sudo permissions."
-                exit_value=1
-            else
-                echo "$user does not have sudo permissions."
-            fi
+# Initialize arrays to store users
+users_with_sudo=()
+users_without_sudo=()
+
+# Check only regular login-capable users (UID >= 1000, valid shell, and non-empty home directory)
+while IFS=: read -r username _ uid _ _ home shell; do
+    if [[ "$uid" -ge 1000 && "$username" != "nobody" && "$shell" != "/sbin/nologin" && "$shell" != "/bin/false" && -n "$home" ]]; then
+        if sudo -l -U "$username" 2>/dev/null | grep -q "(ALL) ALL"; then
+            users_with_sudo+=("$username")
         else
-            echo "$user does not exist."
+            users_without_sudo+=("$username")
         fi
     fi
 done < /etc/passwd
 
-exit $exit_value
+# Print users with sudo permissions
+echo -n "Users with sudo permissions(${#users_with_sudo[@]}): ${users_with_sudo[@]}"
+
+# Print users without sudo permissions
+echo -n " AND Users without sudo permissions(${#users_without_sudo[@]}): ${users_without_sudo[@]}"
+
+if [ ${#users_without_sudo[@]} -ge 1 ]; then
+    exit 0
+else
+    exit 1
+fi

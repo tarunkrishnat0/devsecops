@@ -1,7 +1,8 @@
 # tasks/execute_command.yml
 ---
-- name: Run command
+- name: Run command with sudo
   command: "{{ cmd }}"
+  when: not cmd.startswith('#')
   register: command_result
   ignore_errors: true
   become: true  # Run this task with sudo
@@ -11,10 +12,10 @@
     content: |
       {
         "host": {{ inventory_hostname | to_json }},
-        "command": {{ cmd | to_json }},
+        "command_or_script": {{ cmd | to_json }},
         "exit_code": {{ command_result.rc }},
         "stdout": {{ command_result.stdout | to_json }},
         "stderr": {{ command_result.stderr | to_json }}
       }
-    dest: "/tmp/command_results/{{ inventory_hostname }}_{{ cmd | regex_replace('[^a-zA-Z0-9]', '_') }}.json"
+    dest: "/tmp/audit_results/{{ inventory_hostname }}_{{ cmd | regex_replace('[^a-zA-Z0-9]', '_') }}.json"
   delegate_to: localhost

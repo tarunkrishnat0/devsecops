@@ -1,5 +1,10 @@
 # playbook.yml
-- hosts: all #:!sys-005
+- name: Dev Systems Hardening Audit
+  hosts: all #:!sys-005
   gather_facts: no
+  vars:
+    ansible_become_password: "password"
+  vars_files:
+    - audit_role/vars/sudo_passwords.yml
   roles:
     - role: audit_role

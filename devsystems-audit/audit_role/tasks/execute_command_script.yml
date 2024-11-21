@@ -2,6 +2,7 @@
 ---
 - name: Run command or script with sudo
   command: "{{ item }}"
+  when: not item.startswith('#')
   register: command_result
   ignore_errors: true
   become: true
