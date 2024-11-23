@@ -40,7 +40,7 @@ is_key_valid() {
   local size=$1
   local algo=$2
   local has_passphrase=$3
-  if [[ (($algo == "(RSA)" && $bits -eq 4096) || $algo == "(ED25519)") && $has_passphrase == true ]]; then
+  if [[ (($algo == "(RSA)" && $size -eq 4096) || $algo == "(ED25519)") && $has_passphrase == true ]]; then
     echo "true"
   else
     echo "false"
