@@ -1,16 +1,6 @@
 # Hostname
 hostname
 
-# WiFi Status
-## Connectivity status
-nmcli general status
-
-## only wifi status 
-nmcli radio  wifi 
-
-## nearby Wi-Fi networks
-nmcli dev wifi list
-
 # Run antivirus check
 #sudo clamdscan --multiscan --fdpass /home
 #sudo clamdscan --multiscan --fdpass /usr/

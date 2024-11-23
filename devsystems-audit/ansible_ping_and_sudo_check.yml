@@ -1,0 +1,33 @@
+# ansible_ping_and_sudo_check.yml
+- name: Check ansible-ping connectivity
+  ping:
+  register: ping_check
+  ignore_unreachable: yes
+  ignore_errors: yes
+
+- name: Verify sudo password
+  become: yes
+  become_method: sudo
+  become_user: root
+  command: /bin/true
+  register: sudo_check
+  when: ping_check.ping is defined
+  ignore_errors: yes
+
+- name: Set host results for reporting
+  set_fact:
+    host_status:
+      hostname: "{{ inventory_hostname }}"
+      ansible_ping: "{{ 'Unreachable' if ping_check.msg is defined and 'Failed' in ping_check.msg else ('Success' if ping_check.ping is defined else 'Failed') }}"
+      sudo: "{{ 'Skipped' if ping_check.ping is not defined else ('Success' if sudo_check.rc == 0 else 'Failed') }}"
+      all_checks_passed: >-
+        {{ ping_check.ping is defined and
+           sudo_check.rc == 0 }}
+
+- name: Add host status to report
+  local_action:
+    module: lineinfile
+    path: "{{ connection_results_csv }}"
+    create: yes
+    line: "{{ host_status.hostname }},{{ host_status.ansible_ping }},{{ host_status.sudo }},{{ 'Pass' if host_status.all_checks_passed else 'Fail' }}"
+  delegate_to: localhost

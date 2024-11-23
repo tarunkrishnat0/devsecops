@@ -4,7 +4,53 @@
   gather_facts: no
   vars:
     ansible_become_password: "password"
+    connection_results_csv: "connection-results.csv"
   vars_files:
     - audit_role/vars/sudo_passwords.yml
-  roles:
-    - role: audit_role
+
+  pre_tasks:
+    - name: Initialize connection-results.csv with headers
+      local_action:
+        module: copy
+        content: "hostname,ansible_ping,sudo,all_checks_passed\n"
+        dest: "{{ connection_results_csv }}"
+      delegate_to: localhost
+
+  tasks:
+    - name: Include tasks for ansible-ping, and sudo checks
+      include_tasks: ansible_ping_and_sudo_check.yml
+
+    - name: Gather all_checks_passed status from all hosts
+      set_fact:
+        all_checks_passed_status: "{{ host_status.all_checks_passed }}"
+
+    # - name: Debug all_checks_passed_status
+    #   debug:
+    #     msg: " {{ all_checks_passed_status }}"
+    
+    - name: Aggregate all statuses to compute global_checks_passed
+      delegate_to: localhost
+      run_once: true
+      vars:
+        all_statuses: "{{ ansible_play_hosts | map('extract', hostvars, 'all_checks_passed_status') }}"
+      set_fact:
+        global_checks_passed: "{{ all_statuses | map('bool') | min }}"
+
+    - name: Retrieve global_checks_passed on each host
+      set_fact:
+        global_checks_passed: "{{ hostvars[inventory_hostname]['global_checks_passed'] | default(false) }}"
+
+    # - name: Debug global_checks_passed
+    #   debug:
+    #     msg: " {{ global_checks_passed }}"
+
+  post_tasks:
+    - name: Fail if any host failed the checks
+      fail:
+        msg: "Not all hosts passed pre-checks. Role execution aborted. Check 'connection-results.csv'"
+      when: not global_checks_passed
+
+    - name: Execute the role if all hosts passed
+      include_role:
+        name: audit_role
+      when: global_checks_passed

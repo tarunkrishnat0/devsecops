@@ -2,7 +2,7 @@
 
 # Check if the cryptsetup command is available
 if ! command -v cryptsetup &> /dev/null; then
-    echo "Error: cryptsetup is not installed. Please install it and try again."
+    echo "Error: cryptsetup is not installed. Please install it and try again." >&2
     exit 1
 fi
 
