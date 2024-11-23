@@ -1,7 +1,23 @@
-# ansible_ping_and_sudo_check.yml
-- name: Check ansible-ping connectivity
+# ssh_and_sudo_check.yml
+- name: Ensure directory for partial results exists and clean it
+  local_action:
+    module: file
+    path: /tmp/results_partial/
+    state: absent
+  delegate_to: localhost
+  run_once: true
+
+- name: Recreate directory for partial results
+  local_action:
+    module: file
+    path: /tmp/results_partial/
+    state: directory
+  delegate_to: localhost
+  run_once: true
+
+- name: Check Ansible connectivity using ansible_ping
   ping:
-  register: ping_check
+  register: ansible_ping_check
   ignore_unreachable: yes
   ignore_errors: yes
 
@@ -11,23 +27,31 @@
   become_user: root
   command: /bin/true
   register: sudo_check
-  when: ping_check.ping is defined
+  when: ansible_ping_check.ping is defined
   ignore_errors: yes
 
 - name: Set host results for reporting
   set_fact:
     host_status:
       hostname: "{{ inventory_hostname }}"
-      ansible_ping: "{{ 'Unreachable' if ping_check.msg is defined and 'Failed' in ping_check.msg else ('Success' if ping_check.ping is defined else 'Failed') }}"
-      sudo: "{{ 'Skipped' if ping_check.ping is not defined else ('Success' if sudo_check.rc == 0 else 'Failed') }}"
+      ansible_ping: "{{ 'Unreachable' if ansible_ping_check.unreachable is defined else ('Success' if ansible_ping_check.ping is defined else 'Failed') }}"
+      sudo: "{{ 'Skipped' if ansible_ping_check.ping is not defined else ('Success' if sudo_check.rc == 0 else 'Failed') }}"
       all_checks_passed: >-
-        {{ ping_check.ping is defined and
+        {{ ansible_ping_check.ping is defined and
            sudo_check.rc == 0 }}
 
-- name: Add host status to report
+- name: Write partial results for each host
   local_action:
-    module: lineinfile
-    path: "{{ connection_results_csv }}"
-    create: yes
-    line: "{{ host_status.hostname }},{{ host_status.ansible_ping }},{{ host_status.sudo }},{{ 'Pass' if host_status.all_checks_passed else 'Fail' }}"
+    module: copy
+    content: |
+      {{ host_status.hostname }},{{ host_status.ansible_ping }},{{ host_status.sudo }},{{ 'Pass' if host_status.all_checks_passed else 'Fail' }}
+    dest: /tmp/results_partial/results_partial_{{ inventory_hostname }}.csv
   delegate_to: localhost
+
+- name: Consolidate results into a single file (only on localhost)
+  delegate_to: localhost
+  run_once: true
+  local_action:
+    module: shell
+    args:
+      cmd: "cat /tmp/results_partial/results_partial_*.csv >> {{ connection_results_csv }}"
